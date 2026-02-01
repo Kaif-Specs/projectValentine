@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine 💕</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      font-family: "Segoe UI", sans-serif;
+      padding: 15px;
+    }
+
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 360px;
+      padding: 25px 20px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .emoji {
+      font-size: 52px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 22px;
+      line-height: 1.3;
+    }
+
+    .buttons {
+      position: relative;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    button {
+      padding: 10px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: #fff;
+    }
+
+    #yes:active {
+      transform: scale(0.95);
+    }
+
+    #no {
+      background: #ddd;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 17px;
+      color: #ff4d6d;
+      font-weight: 600;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    @media (max-width: 360px) {
+      h2 {
+        font-size: 18px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 8px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="emoji">🐱❤️</div>
+
+    <h2> Hey!! Marigold🌻, will you be my Valentine?</h2>
+
+    <div class="buttons" id="btnBox">
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+    </div>
+
+    <div class="message" id="loveMsg">
+      Yayyy 💕  
+      <br>
+      You just made my day!  
+      <br>
+      Happy Valentine’s Day ❤️✨
+    </div>
+
+    <div class="footer">
+      Sent with ❤️ by <b>KAIF</b>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const box = document.getElementById("btnBox");
+    const yesBtn = document.getElementById("yes");
+    const msg = document.getElementById("loveMsg");
+
+    function moveNoButton() {
+      // Make NO absolute only when interaction happens
+      noBtn.style.position = "absolute";
+
+      const boxRect = box.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = boxRect.width - btnRect.width;
+      const maxY = boxRect.height - btnRect.height;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
+
+    // Escape only when user tries to select NO
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      msg.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
