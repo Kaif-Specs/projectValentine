@@ -132,7 +132,7 @@
     const msg = document.getElementById("loveMsg");
 
     function moveNoButton() {
-      // Make NO absolute only when interaction happens
+      
       noBtn.style.position = "absolute";
 
       const boxRect = box.getBoundingClientRect();
@@ -148,7 +148,7 @@
       noBtn.style.top = `${y}px`;
     }
 
-    // Escape only when user tries to select NO
+   
     noBtn.addEventListener("mouseenter", moveNoButton);
     noBtn.addEventListener("touchstart", moveNoButton);
 
